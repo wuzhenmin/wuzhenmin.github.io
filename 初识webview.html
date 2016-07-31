@@ -60,9 +60,9 @@
 <meta name="description" content="1.定义：    一个view控件用于加载web页面（目前比较流行的H5页面）2.需要的权限：    webview显然是网络请求的控件，所以使用时必须加入网络请求的权限    3.用法：
 
 a)在手机自带的浏览器中打开目标链接    Uri uri = Uri.parse(“http://www.example.com“);    Intent intent = new Intent(Inte">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="webview 初步认识">
-<meta property="og:url" content="http://yoursite.com/2016/07/31/初识webview/index.html">
+<meta property="og:url" content="http://yoursite.com/初识webview.html">
 <meta property="og:site_name" content="min's blog">
 <meta property="og:description" content="1.定义：    一个view控件用于加载web页面（目前比较流行的H5页面）2.需要的权限：    webview显然是网络请求的控件，所以使用时必须加入网络请求的权限    3.用法：
 
@@ -90,7 +90,13 @@ a)在手机自带的浏览器中打开目标链接    Uri uri = Uri.parse(“htt
   };
 </script>
 
-  <title> webview 初步认识 | min's blog </title>
+  <title>
+  
+
+  
+    webview 初步认识 | min's blog
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -111,7 +117,7 @@ a)在手机自带的浏览器中打开目标链接    Uri uri = Uri.parse(“htt
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -191,65 +197,8 @@ a)在手机自带的浏览器中打开目标链接    Uri uri = Uri.parse(“htt
 
   <div id="posts" class="posts-expand">
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                webview 初步认识
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-31T14:01:57+08:00" content="2016-07-31">
-              2016-07-31
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <blockquote>
+      <blockquote>
 <p>1.定义：<br>    一个view控件用于加载web页面（目前比较流行的H5页面）<br>2.需要的权限：<br>    webview显然是网络请求的控件，所以使用时必须加入网络请求的权限<br>    <uses-permission android:name="android.permission.INTERNET"><br>3.用法：</uses-permission></p>
 <blockquote>
 <p>a)在手机自带的浏览器中打开目标链接<br>    Uri uri = Uri.parse(“<a href="http://www.example.com" target="_blank" rel="external">http://www.example.com</a>“);<br>    Intent intent = new Intent(Intent.ACTION_VIEW, uri);<br>    startActivity(intent);</p>
@@ -304,44 +253,7 @@ webview.loadData(summary, &quot;text/html&quot;, null);
     }
 });
 </code></pre>
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/07/31/hello/" rel="next" title="hello world">
-                <i class="fa fa-chevron-left"></i> hello world
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
 
 
@@ -373,17 +285,8 @@ webview.loadData(summary, &quot;text/html&quot;, null);
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -394,7 +297,7 @@ webview.loadData(summary, &quot;text/html&quot;, null);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -421,17 +324,6 @@ webview.loadData(summary, &quot;text/html&quot;, null);
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -516,10 +408,6 @@ webview.loadData(summary, &quot;text/html&quot;, null);
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
-
-
 
   
 
