@@ -249,8 +249,28 @@
       
         
           
-            <p>#定义：<br>    一个view控件用于加载web页面（目前比较流行的可以加载H5页面）</p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <p>1.定义：一个view控件用于加载web页面（目前比较流行的H5页面）<br>2.需要的权限：webview显然是网络请求的控件，所以使用时必须加入网络请求的权限</p>
+<p><uses-permission android:name="android.permission.INTERNET"><br>3.用法：<br>a)在手机自带的浏览器中打开目标链接<br>Uri uri = Uri.parse(“<a href="http://www.example.com" target="_blank" rel="external">http://www.example.com</a>“);<br>        Intent intent = new Intent(Intent.ACTION_VIEW, uri);<br>        startActivity(intent);</uses-permission></p>
+<p>b)在activity组件中显示webview<br>WebView webview = new WebView(this);<br>        //或者有webview = findviewbyid(R.id…..)<br>        setContentView(webview);<br>        有目标网络地址：webview.loadUrl(要加载的网络地址);</p>
+<p>// OR, you can also load from an HTML string:<br>        直接拼接字符串形成前端页面<br>        String summary = “<html><body>You scored <b>192</b>                                             points.</body></html>“;<br>        webview.loadData(summary, “text/html”, null);</p>
+<p>4.在webview中添加自己的行为用法：<br>a)执行浏览器的UI变化，比如进度条和alert的通知窗口，可以给webview设置<br>webchromeClient，这时会调用webchromeClient的方法<br>getWindow().requestFeature(Window.FEATURE_PROGRESS);//设置窗口风格为进度条<br>webview.getSettings().setJavaScriptEnabled(true);//设置页面javascript可用<br>final Activity activity = this;<br>//在webchromeClient里设置进度条更新<br>webview.setWebChromeClient(new WebChromeClient() {<br>    public void onProgressChanged(WebView view, int progress) {<br>        // Activities and WebViews measure progress with different scales.<br>        // The progress meter will automatically disappear when we reach 100%<br>            activity.setProgress(progress * 1000);<br>    }<br>});</p>
+<p>b)当网页内容出现加载错误，错误提交或者是响应超链接时，可以给webview设置一个webviewclient，超链接会调用webclient里重写的shouldWverrideUrlLoading方法，example：<br>在webviewClient里处理请求错误<br>            webview.setWebViewClient(new WebViewClient() {<br>                public void onReceivedError(WebView view, int errorCode, String                                         description, String failingUrl) {<br>                        Toast.makeText(activity, “Oh no! “ + description,                         Toast.LENGTH_SHORT).show();<br>                    }<br>                });<br>webview.loadUrl(“<a href="http://developer.android.com/" target="_blank" rel="external">http://developer.android.com/</a>“);</p>
+<p>在webview里响应超链接<br>webView.getSettings().setJavaScriptEnabled(true);<br>        webView.loadUrl(“<strong><strong><em>*</em></strong></strong>“);<br>        webView.setWebViewClient(new WebViewClient() {<br>            @Override<br>            public boolean shouldOverrideUrlLoading(WebView view,                 String url) {<br>//这里传入的url是响应的超链接url，和webview加载的                                        url不同<br>                if (url != null) {<br>                    if (“min://api/getInfo”.equals(url)) {<br>                        JSONObject jsonObject = new JSONObject();<br>                        try {<br>                            jsonObject.put(“version”,                 android.os.Build.VERSION.SDK_INT);<br>                            jsonObject.put(“man”, “min”);<br>                        } catch (JSONException e) {<br>                            e.printStackTrace();<br>                        }<br>//                        String call = “javascript:alertMessage(\”” + “content” + “\”)”; webView.loadUrl(call);<br>                        webView.loadUrl(“javascript:’”+jsonObject+”‘“);<br>                        Toast.makeText(MainActivity.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();<br>                    }<br>                }</p>
+<pre><code>        return false;
+
+    }
+
+    @Override
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        super.onPageStarted(view, url, favicon);
+    }
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+    }
+});
+</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
           
         
